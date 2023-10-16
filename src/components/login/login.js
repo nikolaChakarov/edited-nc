@@ -49,16 +49,12 @@ function Login() {
 		const jsonRes = await dbRes.json();
 
 		if (jsonRes.status === 200) {
-			values.rememberMe
-				? setLocalStorage(lsKey, {
-						isLogged: true,
-						rememberMe: values.rememberMe,
-						username: values.username,
-				  })
-				: setLocalStorage(lsKey, {
-						isLogged: true,
-						rememberMe: values.rememberMe,
-				  });
+			setLocalStorage(lsKey, {
+				isLogged: true,
+				rememberMe: values.rememberMe,
+				username: values.username,
+			});
+
 			dispatch({
 				type: 'LOGIN',
 				payload: { ...values, isLogged: true },
